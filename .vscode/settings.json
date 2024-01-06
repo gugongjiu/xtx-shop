@@ -9,5 +9,13 @@
   "files.associations": {
     "pages.json": "jsonc", // pages.json 可以写注释
     "manifest.json": "jsonc" // manifest.json 可以写注释
-  }
+  },
+  // 控制 VSCode 的语义和语法检查，如果设置为 false，那么语法和语义检查全部关闭
+  "javascript.validate.enable": true,
+  // 语义检查，如果设置为 false，则语义检查被关闭
+  "javascript.validate.semanticValidation": false,
+  // 检查语法错误，如果设置为 false，则语法检查被关闭
+  "javascript.validate.syntaxValidation": true,
+  "cSpell.checkOnlyEnabledFileTypes": true,
+  "cSpell.enabled": false
 }
