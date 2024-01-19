@@ -1,6 +1,6 @@
 import { useMemberStore } from '@/stores'
 
-const baseUrl = 'https://pcapi-xiaotuxian-front-devtest/itheima.net'
+const baseUrl = 'https://pcapi-xiaotuxian-front.itheima.net'
 
 // 添加请求拦截器
 const httpInterceptor = {

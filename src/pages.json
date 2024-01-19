@@ -23,7 +23,9 @@
     {
       "path": "pages/my/my",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的",
+        "navigationBarTextStyle": "white"
       }
     },
     {
@@ -42,6 +44,18 @@
       "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/hot/hot",
+      "style": {
+        "navigationBarTitleText": "热门推荐"
+      }
+    },
+    {
+      "path": "pages/goods/goods",
+      "style": {
+        "navigationBarTitleText": "商品详情"
       }
     }
   ],
