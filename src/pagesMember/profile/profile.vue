@@ -57,11 +57,14 @@ const onsubmit = async () => {
     nickname: profile.value?.nickname,
     gender: profile.value.gender,
   })
-  console.log(res)
+  memberStore.profile!.nickname = res.result.nickname
   uni.showToast({
     icon: 'success',
     title: '保存成功!',
   })
+  setTimeout(() => {
+    uni.navigateBack()
+  }, 400)
 }
 </script>
 
