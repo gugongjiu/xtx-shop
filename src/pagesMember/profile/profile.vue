@@ -61,14 +61,24 @@ const onBrithdayChange: UniHelper.DatePickerOnChange = (ev) => {
 }
 
 // 修改城市
+let fullLoactionCode: [string, string, string] = ['', '', '']
+const onCityChange: UniHelper.RegionPickerOnChange = (ev) => {
+  console.log(ev.detail)
+  profile.value.fullLocation = ev.detail.value.join(' ')
+  fullLoactionCode = ev.detail.code!
+}
 
 // 修改用户信息
 const onsubmit = async () => {
-  const { nickname, gender, birthday } = profile.value
+  const { nickname, gender, birthday, profession } = profile.value
   const res = await putMemberProfileApi({
-    nickname: nickname,
-    gender: gender,
-    birthday: birthday,
+    nickname,
+    gender,
+    birthday,
+    provinceCode: fullLoactionCode[0],
+    cityCode: fullLoactionCode[1],
+    countyCode: fullLoactionCode[2],
+    profession,
   })
   memberStore.profile!.nickname = res.result.nickname
   uni.showToast({
@@ -136,14 +146,19 @@ const onsubmit = async () => {
         </view>
         <view class="form-item">
           <text class="label">城市</text>
-          <picker class="picker" mode="region" :value="profile?.fullLocation?.split(' ')">
+          <picker
+            class="picker"
+            mode="region"
+            :value="profile?.fullLocation?.split(' ')"
+            @change="onCityChange"
+          >
             <view v-if="profile?.fullLocation">{{ profile?.fullLocation }}</view>
             <view class="placeholder" v-else>请选择城市</view>
           </picker>
         </view>
         <view class="form-item">
           <text class="label">职业</text>
-          <input class="input" type="text" placeholder="请填写职业" :value="profile?.profession" />
+          <input class="input" type="text" placeholder="请填写职业" v-model="profile!.profession" />
         </view>
       </view>
       <!-- 提交按钮 -->
