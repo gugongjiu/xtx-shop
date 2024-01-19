@@ -101,7 +101,7 @@ const onsubmit = async () => {
     <!-- 头像 -->
     <view class="avatar">
       <view class="avatar-content" @tap="onAvatarChange">
-        <image class="image" :src="profile?.avatar" mode="aspectFill" />
+        <image class="image" :src="memberStore.profile?.avatar" mode="aspectFill" />
         <text class="text">点击修改头像</text>
       </view>
     </view>

@@ -3,8 +3,6 @@
 <script setup lang="ts">
 import { useGuessList } from '@/composables'
 import { useMemberStore } from '@/stores'
-import type { XtxGuessInstance } from '@/types/component'
-import { ref } from 'vue'
 
 // 获取屏幕边界到安全区域距离
 const { safeAreaInsets } = uni.getSystemInfoSync()
@@ -15,7 +13,7 @@ const orderTypes = [
   { type: 3, text: '待收货', icon: 'icon-check' },
   { type: 4, text: '待评价', icon: 'icon-comment' },
 ]
-const menberStore = useMemberStore()
+const memberStore = useMemberStore()
 
 const { guessRef, onScrolltolower } = useGuessList()
 </script>
@@ -25,13 +23,13 @@ const { guessRef, onScrolltolower } = useGuessList()
     <!-- 个人资料 -->
     <view class="profile" :style="{ paddingTop: safeAreaInsets!.top + 'px' }">
       <!-- 情况1：已登录 -->
-      <view class="overview" v-if="menberStore.profile">
+      <view class="overview" v-if="memberStore.profile">
         <navigator url="/pagesMember/profile/profile" hover-class="none">
-          <image class="avatar" mode="aspectFill" :url="menberStore.profile.avatar"></image>
+          <image class="avatar" mode="aspectFill" :src="memberStore.profile?.avatar"></image>
         </navigator>
         <view class="meta">
           <view class="nickname">
-            {{ menberStore.profile.nickname || menberStore.profile.account }}
+            {{ memberStore.profile.nickname || memberStore.profile.account }}
           </view>
           <navigator class="extra" url="/pagesMember/profile/profile" hover-class="none">
             <text class="update">更新头像昵称</text>
